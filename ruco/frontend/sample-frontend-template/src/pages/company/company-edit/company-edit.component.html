@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="header">Edit Company</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>Company Name<span class="imp">*</span></label>
+            <input type="text" formControlName="companyName" required>
+        </div>
+        <div class="input-field">
+            <label>Company Address<span class="imp">*</span></label>
+            <input type="text" minlength="6" formControlName="companyAddress" required>
+        </div>
+        <div class="input-field">
+            <label>State<span class="imp">*</span></label>
+            <input type="text" placeholder="Select State" formControlName="state" [matAutocomplete]="auto1" required>
+            <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayStateFn"
+                (optionSelected)="onSelectState($event)">
+                <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                    {{ state.stateName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field">
+            <label>City<span class="imp">*</span></label>
+            <input type="text" placeholder="Select City" formControlName="city" [matAutocomplete]="auto2" required>
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayCityFn"
+                (optionSelected)="onSelectCity($event)">
+                <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                    {{ city.cityName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field">
+            <label>Area</label>
+            <input type="text" placeholder="Select Area" formControlName="area" [matAutocomplete]="auto3">
+            <mat-autocomplete #auto3="matAutocomplete" [displayWith]="displayAreaFn">
+                <mat-option *ngFor="let area of filteredAreas | async" [value]="area">
+                    {{ area.areaName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field">
+            <label>Contact Person<span class="imp">*</span></label>
+            <input type="text" formControlName="contactPerson" required>
+        </div>
+        <div class="input-field">
+            <label>Mobile No.<span class="imp">*</span></label>
+            <input type="text" formControlName="mobileNo" maxlength="10" required (keypress)="onlyNumbers($event)">
+        </div>
+        <div class="input-field">
+            <label>Email Id.<span class="imp">*</span></label>
+            <input type="email" formControlName="emailId" required>
+        </div>
+        <div class="input-field">
+            <label>GST No.<span class="imp">*</span></label>
+            <input type="text" maxlength="15" formControlName="gstNo" required>
+        </div>
+        <div class="input-field">
+            <label>PAN No.<span class="imp">*</span></label>
+            <input type="text" maxlength="10" formControlName="panNo" required>
+        </div>
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+        <div class="action-btns">
+            <button type="submit">Update</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <header>
+        <label>Add Single Collection</label>
+    </header>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>FBO Branch<span class="imp">*</span></label>
+            <input type="text" placeholder="Select Branch" formControlName="fboBranch" [matAutocomplete]="auto" required>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFboBranchFn">
+                <mat-option *ngFor="let fboBranch of filteredFboBranches | async" [value]="fboBranch">
+                    {{ fboBranch.fboBranchName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field">
+            <label>Date<span class="imp">*</span></label>
+            <input type="date" formControlName="requestDate" required>
+        </div>
+        <div class="input-field">
+            <label>Tentative Qty. available<span class="imp">*</span></label>
+            <input type="number" formControlName="qty" required>
+        </div>
+        <div class="input-field">
+            <label>Description<span class="imp">*</span></label>
+            <textarea formControlName="description" required></textarea>
+        </div>
+
+        <div class="action-btns" style="margin-top: 30px;">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

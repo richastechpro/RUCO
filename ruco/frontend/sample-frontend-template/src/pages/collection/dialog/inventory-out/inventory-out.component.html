@@ -1,0 +1,63 @@
+<div class="container">
+    <header>
+        <label>Create Inventory Outward Register</label>
+    </header>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+
+        <div class="input-field">
+            <label>Branch</label>
+            <input type="text" placeholder="Select Branch" formControlName="branch" [matAutocomplete]="auto2" required>
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelect($event)">
+                <mat-option *ngFor="let branch of filteredBranches | async" [value]="branch">
+                    {{ branch.branchName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+
+        <!-- <div class="input-field">
+            <label>Warehouse</label>
+            <input type="text" formControlName="warehouse" readonly required>
+        </div> -->
+
+        <div class="input-field">
+            <label>Customer</label>
+            <input type="text" placeholder="Select Customer" formControlName="customer" [matAutocomplete]="auto1"
+                required>
+            <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayCustomerFn">
+                <mat-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
+                    {{ customer.customerName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+
+        <div class="input-field">
+            <label>Available Qty</label>
+            <input type="text" formControlName="availableQty" (keypress)="onlyNumbers($event)" required readonly>
+        </div>
+
+        <div class="input-field">
+            <label>Outward Qty</label>
+            <input type="text" formControlName="qty" (keypress)="onlyNumbers($event)" required>
+        </div>
+
+        <div class="input-field">
+            <label>Comment</label>
+            <textarea formControlName="comment" rows="10"></textarea>
+        </div>
+
+        <div class="input-field">
+            <label>Vehicle No</label>
+            <input type="text" formControlName="vehicleNo" required>
+        </div>
+
+        <div class="input-field">
+            <label>Transporter Name</label>
+            <input type="text" formControlName="transporter" required>
+        </div>
+
+        <div class="action-btns" style="margin-top: 30px;">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

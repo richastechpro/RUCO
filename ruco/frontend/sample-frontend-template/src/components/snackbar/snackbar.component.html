@@ -1,0 +1,11 @@
+<div class="container" [style.background-color]="data.backgroundColor">
+    <div class="flex">
+        <span class="title" [style.color]="data.color" matSnackBarLabel>{{ data.title }}</span>
+        <span class="msg" [style.color]="data.color" matSnackBarLabel>{{ data.msg }}</span>
+    </div>
+    <span matSnackBarActions>
+        <button mat-icon-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">
+            <mat-icon [style.color]="data.color">cancel</mat-icon>
+        </button>
+    </span>
+</div>

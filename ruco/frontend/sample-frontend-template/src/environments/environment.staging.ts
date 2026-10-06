@@ -1,0 +1,27 @@
+export const environment = {
+  servletPath: 'app',
+  url: 'http://localhost:8080/api/apple-stationery',
+
+  dashboard: 'dashboard',
+  company: 'company',
+  branch: 'branch',
+  user: 'user',
+  transporter: 'transporter',
+  state: 'state',
+  city: 'city',
+  area: 'area',
+  inventory: 'inventory',
+  report: 'report',
+  customer: 'customer',
+  location: 'location',
+  fbo: 'fbo',
+  bulk: 'bulk',
+  collection: 'collection',
+  fboBranch: 'fbo-branch',
+  fboBranchLogin: 'fbo-branch-login',
+
+  list: 'list',
+  create: 'create',
+  view: 'view',
+  edit: 'edit',
+};

@@ -1,0 +1,22 @@
+@use "../../../constants/colors.scss" as color;
+
+.container {
+  margin: 25px;
+}
+
+.header {
+  font-family: ROBOTO-MEDIUM;
+  color: #000;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+form {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 25px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 1.5rem;
+}

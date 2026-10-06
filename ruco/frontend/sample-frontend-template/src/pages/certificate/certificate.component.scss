@@ -1,0 +1,26 @@
+.container-fluid {
+  padding: 0 15px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  color: #76838f;
+  background-color: transparent;
+}
+
+.card {
+  font-weight: bold !important;
+  margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+}
+
+.card-body {
+  background-color: #fff !important;
+  width: 610px;
+  margin: auto;
+  background: url("../../../public/images/bg-background_new.png") no-repeat;
+  background-position: top center;
+}

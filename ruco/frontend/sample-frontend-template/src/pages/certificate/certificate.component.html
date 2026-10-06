@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <a href="#" onclick="window.history.back();" class="button" style="float: left; font-size: 25px;"
+    title="BACK">&#8678;</a>
+  <a href="#" class="button" onclick="printContent('PrintBody')" style="float: right;"><img src="images/print-icon.png"
+      width="20px;" title="PRINT"></a>
+  <br />
+  <br />
+  <div class="card" id="PrintBody">
+    <div class="card-body">
+      <table style="width: 500px;line-height: 24px;margin: auto;border-collapse: collapse;margin: 50px auto;background: url(./images/bg-logo_new.svg) no-repeat;
+      background-position: 100% 70%;">
+        <tbody>
+          <tr>
+            <td style="padding:25px 0 50px">
+              <img src="https://eatrightindia.gov.in/ruco/img/rlogo.png" alt="RUCO" style="width: 150px;">
+              <br />
+              <span style="margin-left: 28px; font-size: 10px;font-weight: bold;">FSSAI Initiative</span>
+            </td>
+            <td style="padding:25px 0 50px;float:right">
+              <img src="./images/blue_stone_logo.png" alt="blue stone logo" style="width: 170px;">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center;">
+              <h1 style="font-size:28px;font-family: Times;color: #0e223e;"><strong>CERTIFICATE OF DISCHARGE</strong>
+              </h1>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="font-size:15px">
+              <p style="text-align: justify;">With reference to the notification for Food Safety and Standards
+                (Licensing and Registration of food business) First Amendment Regulation2017, w.r.t. quality of
+                vegetable oil for repeated frying in the official gazette of India S.O. No. 2492 (E) and FSSAI
+                notification 11/fssai-2018 dated 9th August 2019.</p>
+              <p style="text-align: justify;">It may be noted that M/s. BLUE STONE ENERGY PVT LTD has collected the Used
+                Cooking Oil from {{ certificateDetails.fbo_name }} as per details mentioned below -</p>
+              <table style="width:100%;border-collapse:collapse;margin-top:50px">
+                <thead>
+                  <tr>
+                    <th style="border: 1px solid #000;padding:5px;font-weight:bold;text-align:center;">Sr.No.</th>
+                    <th style="border: 1px solid #000;padding:5px;font-weight:bold;text-align:center;">Date</th>
+                    <th style="border: 1px solid #000;padding:5px;font-weight:bold;text-align:center;">GST Invoice
+                      Number</th>
+                    <th style="border: 1px solid #000;padding:5px;font-weight:bold;text-align:center;">Quantity Kgs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="border: 1px solid #000;padding:5px;text-align:center;">{{ certificateDetails.certificate_no }}</td>
+                    <td style="border: 1px solid #000;padding:5px;text-align:center;">{{ certificateDetails.collected_on }}</td>
+                    <td style="border: 1px solid #000;padding:5px;text-align:center;">{{ certificateDetails.invoice_no }}</td>
+                    <td style="border: 1px solid #000;padding:5px;text-align:center;">{{ certificateDetails.collected_qty }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-top: 80px; vertical-align: bottom;">
+              <img src="./images/biodiesel-cert.png" alt="RUCO" style="width:70%;" />
+            </td>
+            <td style="padding-top: 80px; text-align: right;">
+              <img src="./images/signature-cert.png" style="width:60%;" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding-top: 80px">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

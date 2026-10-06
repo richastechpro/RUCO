@@ -1,0 +1,22 @@
+@use "../../constants/colors.scss" as color;
+
+.container {
+  width: auto;
+  background-color: #fff;
+  padding: 25px 50px;
+  display: flex;
+  flex-wrap: wrap;
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 30px;
+  }
+}
+
+h3 {
+  font-family: ROBOTO-MEDIUM;
+  font-weight: 400;
+  color: #76838f;
+}

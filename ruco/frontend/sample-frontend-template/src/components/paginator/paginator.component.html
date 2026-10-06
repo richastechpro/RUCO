@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="title">Showing {{offset}} to {{to}} of {{records}} entries</div>
+    <div class="flex">
+
+        <button class="title" (click)="previous(true,currentPage!.index-1)" [disabled]="currentPage?.pageNo === 1"
+            [style.cursor]="currentPage?.pageNo === 1 ? 'auto' : 'pointer'"
+            [style.background-color]="currentPage?.pageNo === 1 ? '#fff' : '#005cbb'"
+            [style.color]="currentPage?.pageNo === 1 ? '#ccc' : '#fff'"><mat-icon>keyboard_double_arrow_left</mat-icon><span
+                style="margin-left: 2px;">Prev</span></button>
+
+ 
+
+        <button class="page" *ngFor="let page of pages;let i = index"
+            [style.background-color]="page.active?'#005cbb':'#fff'" [style.color]="page.active?'#fff':''"
+            (click)="navigate(page.pageNo,page.index)">
+            @if(page.pageNo < 10){ <span class="empty"></span>
+                {{page.pageNo}}
+                <span class="empty"></span>
+                }
+                @else {
+                {{page.pageNo}}
+                }
+        </button>
+
+
+
+        <button class="title" (click)="next(true,currentPage!.index+1)" [disabled]="currentPage?.pageNo === size"
+            [style.cursor]="currentPage?.pageNo === size ? 'auto' : 'pointer'"
+            [style.background-color]="currentPage?.pageNo < size ?'#005cbb':'#fff'"
+            [style.color]="currentPage?.pageNo < size ?'#fff':''"><span
+                style="margin-right: 2px;">Next</span><mat-icon>keyboard_double_arrow_right</mat-icon></button>
+    </div>
+    <br>
+</div>

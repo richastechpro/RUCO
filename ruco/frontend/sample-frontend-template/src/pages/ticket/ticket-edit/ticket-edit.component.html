@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="chat-container">
+    <div class="chat-header">
+      <div></div>
+      <div>
+        <div style="text-transform: uppercase;">{{ ticket.subject }}</div>
+        <div style="font-size: 0.85rem; margin-top: 10px;">TICKET ID : <span
+            style="text-decoration: underline; cursor: pointer;">{{ ticket.ticketId }}</span></div>
+      </div>
+      <div>
+        @if(ticket.status === 'OPEN'){
+          <button type="button" class="close-button" matRipple (click)="closeTicket()">close ticket</button>
+        }@else {
+          <button type="button" class="close-button" style="background-color: #410f14;" matRipple disabled>ticket closed</button>
+        }
+      </div>
+    </div>
+
+    <div class="chat-box">
+      @for (msg of messages; track $index) {
+      <div [class]="msg.username === username() ? 'chat-bubble client' : 'chat-bubble support'">
+        <div class="sender">{{ msg.username === username() ? 'You' : msg.username }}</div>
+        <div class="text">{{ msg.message }}</div>
+        <div class="time">{{ msg.date }}</div>
+      </div>
+      }
+    </div>
+
+    @if(ticket.status === 'OPEN'){
+      <div class="chat-input">
+      <textarea type="text" placeholder="Type your message..." [(ngModel)]="newMessage"
+        (keyup.enter)="sendMessage()"></textarea>
+      <button (click)="sendMessage()">Send</button>
+    </div>
+    }
+  </div>
+
+</div>

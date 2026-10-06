@@ -1,0 +1,12 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="submit()" ngNativeValidate>
+        <div class="input-field">
+            <label for="name">Password<span class="imp">*</span></label>
+            <input type="password" formControlName="pwd" placeholder="Enter New Password" required>
+        </div>
+        <div class="action-btns">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="close()">Cancel</button>
+        </div>
+    </form>
+</div>

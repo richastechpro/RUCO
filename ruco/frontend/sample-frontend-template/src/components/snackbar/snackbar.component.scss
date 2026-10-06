@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+ 
+.title {
+  font-size: 1.2rem;
+  font-family: ROBOTO-MEDIUM;
+  margin-bottom: -20px;
+}
+
+.msg {
+  font-size: 1.1rem;
+  font-family: POPPIN-BOLD;
+}

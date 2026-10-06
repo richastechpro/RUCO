@@ -1,0 +1,40 @@
+<div class="container">
+    <header>
+        <label>Add Collection Details</label>
+    </header>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+
+        <div class="input-field">
+            <label>Assigned Qty.</label>
+            <input type="number" formControlName="assignedQty" required readonly>
+        </div>
+        <div class="input-field">
+            <label>Collected Qty.</label>
+            <input type="number" formControlName="collectedQty" required>
+        </div>
+        <div class="input-field">
+            <label>Collected On</label>
+            <input type="date" formControlName="collectedOn" required>
+        </div>
+        <div class="input-field">
+            <label>Invoice No.</label>
+            <input type="number" formControlName="invoiceNo" required>
+        </div>
+        <div class="input-field">
+            <label>Description</label>
+            <textarea formControlName="descr" required></textarea>
+        </div>
+        <div class="input-field action-btns">
+            <input type="file" id="fileInput" #fileInput style="display: none" multiple accept="image/*"
+                (change)="onFileSelected($event)" />
+            <button type="button" (click)="fileInput.click()"
+                style="width: 130px; background-color: blue; color: white;">
+                Add Image
+            </button>
+        </div>
+        <div class="action-btns" style="margin-top: 30px;">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

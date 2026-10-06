@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="header">Add FBO</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>FBO Name/Established Name<span class="imp">*</span></label>
+            <input type="text" formControlName="fboName" required style="width: 800px;">
+        </div> 
+       
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+
+        <h3 class="tit">Add Bank Details</h3>
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+
+        <div class="input-field">
+            <label>Bank Name<span class="imp">*</span></label>
+            <input type="text" formControlName="bankName" required>
+        </div>
+        <div class="input-field">
+            <label>Account Type<span class="imp">*</span></label>
+            <select formControlName="accountType" required>
+                @for (accType of accTypes; track accType) {
+                <option [value]="accType">{{ accType }}</option>
+                }
+            </select>
+        </div>
+        <div class="input-field">
+            <label>Account No.<span class="imp">*</span></label>
+            <input type="text" formControlName="accountNo" required>
+        </div>
+        <div class="input-field">
+            <label>IFSC Code<span class="imp">*</span></label>
+            <input type="text" formControlName="accountHolderName" required>
+        </div>
+        <div class="input-field">
+            <label>Account Holder Name<span class="imp">*</span></label>
+            <input type="text" formControlName="ifscCode" required>
+        </div>
+        <div class="input-field">
+            <label>Mobile No.<span class="imp">*</span></label>
+            <input type="number" [maxLength]="10" formControlName="mobileNo" required>
+        </div>
+        
+        <div class="action-btns">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

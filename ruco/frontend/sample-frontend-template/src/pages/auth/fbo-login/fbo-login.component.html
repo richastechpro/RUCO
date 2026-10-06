@@ -1,0 +1,19 @@
+<div class="container">
+    <img class="icon" src="./images/blue_stone_logo.png">
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label for="email">Email:</label>
+            <input type="text" formControlName="email" name="email" id="email" autocomplete="email" required>
+        </div>
+        <br>
+        <div class="input-field">
+            <label for="password">Password:</label>
+            <input type="password" formControlName="password" name="password" id="password"
+                autocomplete="current-password" required>
+        </div>
+        <br>
+        <div class="action-btns">
+            <button class="submit" type="submit">Sign In</button>
+        </div>
+    </form>
+</div> 

@@ -1,0 +1,34 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="input-field">
+      <label for="name">Contact Person name<span class="imp">*</span></label>
+      <input type="text" formControlName="name" required>
+    </div>
+    <div class="input-field">
+      <label for="mobileNo">Mobile No.<span class="imp">*</span></label>
+      <input type="text" maxlength="10" minlength="10" class="input-txt" formControlName="mobileNo" pattern="\d{10}"
+        (keydown)="validateNumberInput($event)" required>
+    </div>
+    <div class="input-field">
+      <label for="email">Email<span class="imp">*</span></label>
+      <input type="text" formControlName="email" required>
+    </div>
+
+    <div class="input-field">
+      <label for="landLineNo">Landline No.<span class="imp">*</span></label>
+      <input type="text" formControlName="landLineNo" required>
+    </div>
+    <div class="input-field">
+      <label for="designation">Designation<span class="imp">*</span></label>
+      <input type="text" formControlName="designation" required>
+    </div>
+    <div class="input-field">
+      <label for="remark">Remark<span class="imp">*</span></label>
+      <textarea rows="5" formControlName="remark" required></textarea>
+    </div>
+    <div class="action-btns">
+      <button type="submit">Submit</button>
+      <button type="button" (click)="close()">Cancel</button>
+    </div>
+  </form>
+</div>

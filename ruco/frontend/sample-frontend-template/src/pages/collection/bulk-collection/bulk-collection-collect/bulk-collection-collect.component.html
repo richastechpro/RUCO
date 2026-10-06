@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="header">Collection Details</div>
+    <div class="add-btn">
+        <div class="input-field">
+            <label>Collection Name</label>
+            <input type="text" style="width: 205px;" required [(ngModel)]="collectionName" readonly>
+        </div>
+    </div>
+    <br>
+    <div class="data">
+        <form [formGroup]="form" autocomplete="on" ngNativeValidate>
+            <ng-container formArrayName="items">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>FBO Name</th>
+                            <th style="width: 100px;">Date</th>
+                            <th>Tentative Qty.</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+                            <td>{{ i + 1 }}.</td>
+                            <td>
+                                <div class="input-field">
+                                    <input type="text" placeholder="Select Branch" formControlName="branch" readonly>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-field">
+                                    <input type="date" formControlName="requestDate" required readonly>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-field" style="width: 120px;margin-right: -100px;margin-left: 10px;">
+                                    <input type="number" formControlName="qtyAvailable" required readonly>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-field">
+                                    <textarea formControlName="descr" required readonly></textarea>
+                                </div>
+                            </td>
+                            <td>
+                                @if(item.get('collectedStatus')?.value == 'Not Collected') {
+                                <button type="button" (click)="collect(i)" class="a-btn">Not Collected</button>
+                                }
+                                @else {
+                                Collected
+                                }
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </ng-container>
+        </form>
+    </div>
+    <div class="action-btns" style="margin-top: 30px;">
+        <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+</div>

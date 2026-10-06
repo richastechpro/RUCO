@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="header">Edit City</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>State<span class="imp">*</span></label>
+            <input type="text" formControlName="stateName" required style="width: 350px;" readonly>
+        </div>
+        <div class="input-field">
+            <label>City<span class="imp">*</span></label>
+            <input type="text" formControlName="cityName" required style="width: 350px;">
+        </div>
+        <div class="action-btns">
+            <button type="submit">Update</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

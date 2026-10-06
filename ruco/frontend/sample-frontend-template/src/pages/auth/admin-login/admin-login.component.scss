@@ -1,0 +1,43 @@
+@use "../../../constants/colors.scss" as color;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form{
+  margin-top: 50px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 50px 40px;
+}
+
+.action-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 10px 0;
+
+  button {
+    padding: 0.5rem 1.5rem;
+    font-family: ROBOTO-REGULAR;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &[type="submit"] {
+      background-color: color.$primary;
+      color: #f8f9fa;
+      border: 1px solid color.$primary;
+
+      &:hover {
+        background-color: color.$blue;
+      }
+    }
+  }
+}

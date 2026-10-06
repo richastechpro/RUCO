@@ -1,0 +1,113 @@
+<div class="container">
+    <div class="header">Edit FBO</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>FBO Name/Established Name<span class="imp">*</span></label>
+            <input type="text" formControlName="fboName" required style="width: 800px;">
+        </div>
+
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+
+        <h3 class="tit">Add Bank Details</h3>
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+
+        <div class="input-field">
+            <label>Bank Name<span class="imp">*</span></label>
+            <input type="text" formControlName="bankName" required>
+        </div>
+        <div class="input-field">
+            <label>Account Type<span class="imp">*</span></label>
+            <select formControlName="accountType" required>
+                @for (accType of accTypes; track accType) {
+                <option [value]="accType">{{ accType }}</option>
+                }
+            </select>
+        </div>
+        <div class="input-field">
+            <label>Account No.<span class="imp">*</span></label>
+            <input type="text" formControlName="accountNo" required>
+        </div>
+        <div class="input-field">
+            <label>IFSC Code<span class="imp">*</span></label>
+            <input type="text" formControlName="accountHolderName" required>
+        </div>
+        <div class="input-field">
+            <label>Account Holder Name<span class="imp">*</span></label>
+            <input type="text" formControlName="ifscCode" required>
+        </div>
+        <div class="input-field">
+            <label>Mobile No.<span class="imp">*</span></label>
+            <input type="text" formControlName="mobileNo" required>
+        </div>
+
+        <div class="action-btns">
+            <button type="button" style="background-color: blue;" (click)="addBranch()">Add Branch</button>
+            <button type="button" style="background-color: orange;" matRipple (click)="downloadFormat()">Download
+                Format</button>
+            <button type="button" style="background-color: green;" (click)="fileInput.click()">Import From
+                Excel</button>
+            <input type="file" #fileInput hidden (change)="onFileSelected($event)" />
+        </div>
+
+        <div class="input-field"></div>
+
+        @if(fboBranches.length){
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Branch Name</th>
+                    <th>Representative</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Mobile No</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Branch</th>
+                    <th>Rate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of fboBranches; track $index) {
+                <tr>
+                    <td>{{ $index + 1 }}.</td>
+                    <td>{{ item.fboBranchName }}</td>
+                    <td>{{ item.representative }}</td>
+                    <td>{{ item.fboBranchAddress }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.mobileNo }}</td>
+                    <td>{{ item.stateName }}</td>
+                    <td>{{ item.cityName }}</td>
+                    <td>{{ item.branchName }}</td>
+                    <td>{{ item.rate?.price ?? 0 }}</td>
+                    <td style="width: 8%; white-space: nowrap;">
+                        @if(isManager()){
+                        <button type="button" mat-icon-button (click)="updateRate(item.id , $index)">
+                            <mat-icon style="color: #76838F;"
+                                fontSet="material-icons-outlined">currency_rupee</mat-icon>
+                        </button>
+                        }
+                        <button type="button" mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button type="button" mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        }
+
+
+        <div class="action-btns">
+            <button type="submit">Update</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,279 @@
+<div class="breadcrumb">
+    <div class="title">{{ module()[module().length - 1]}}</div>
+    <div class="routes">
+        @for (mod of module(); track $index) {
+        <span class="route">{{ mod }} </span>
+        @if($index < module().length - 1){ <span class="separator">/&nbsp;</span>
+            }
+            }
+    </div>
+</div>
+<div class="container">
+    <header>
+        <div class="center">
+            @if(this.curModule() !== customerItemMaster()){
+            <select (change)="onSelectRow($event)">
+                @for (row of rows; track row) {
+                <option [selected]="row === limit()" [value]="row">{{ row }}</option>
+                }
+            </select>
+            }
+        </div>
+        <div>
+            @if(this.curModule() === customerItemMaster()){
+            <button mat-flat-button class="btn-sm"
+                (click)="download(customerItemMaster())"><mat-icon>download</mat-icon>Download</button>
+            &nbsp;&nbsp;&nbsp;
+            <button mat-flat-button class="btn-sm"
+                (click)="fileInput.click()"><mat-icon>upload</mat-icon>Upload</button> &nbsp;&nbsp;&nbsp;
+            <input type="file" #fileInput hidden (change)="onFileSelected($event,'customer-item')" />
+            }
+            @if(this.curModule() === brandMaster()){
+            <button mat-flat-button class="btn-sm"
+                (click)="fileInput.click()"><mat-icon>upload</mat-icon>Upload</button> &nbsp;&nbsp;&nbsp;
+            <input type="file" #fileInput hidden (change)="onFileSelected($event,'brand')" />
+            }
+            @if(this.curModule() === itemCategoryMaster()){
+            <button mat-flat-button class="btn-sm"
+                (click)="fileInput.click()"><mat-icon>upload</mat-icon>Upload</button> &nbsp;&nbsp;&nbsp;
+            <input type="file" #fileInput hidden (change)="onFileSelected($event,'item-category')" />
+            }
+            @if(this.curModule() === itemMaster()){
+            <button mat-flat-button class="btn-sm"
+                (click)="download(itemMaster())"><mat-icon>download</mat-icon>Download</button>
+            &nbsp;&nbsp;&nbsp;
+            <button mat-flat-button class="btn-sm"
+                (click)="fileInput.click()"><mat-icon>upload</mat-icon>Upload</button> &nbsp;&nbsp;&nbsp;
+            <input type="file" #fileInput hidden (change)="onFileSelected($event,'item')" />
+            }
+            @if(this.curModule() === orderMaster()){
+            <select (change)="onSelectCustomer($event)" class="select">
+                @for (customer of customers; track $index) {
+                <option [value]="customer.field">{{ customer.value }}</option>
+                }
+            </select>
+            &nbsp;
+            <button mat-flat-button class="btn-sm" (click)="loadOrdersById()">Show</button>
+            &nbsp;&nbsp;&nbsp;
+            <button mat-flat-button class="btn-sm"
+                (click)="download(orderMaster())"><mat-icon>download</mat-icon>Download</button>
+            }
+            @if(this.curModule() !== orderMaster()){
+            <button mat-flat-button class="btn-sm" (click)="navigateToCreateData()">
+                <mat-icon>add</mat-icon> {{ addBtnTxt() }}
+            </button>
+            }
+            <div class="input-container">
+                <input type="text" placeholder="Enter search term ..." [(ngModel)]="searchTxt" />
+                <button mat-icon-button class="search" (click)="search()" [disabled]="!(searchTxt && searchTxt.length)">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+    <br />
+    <div class="data">
+        <table>
+            <thead>
+                <tr>
+                    @for (header of headers(); track $index) {
+                    <th>{{ header }}</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+
+                @if(curModule() === userMaster()){
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td>{{ item.firstName }}</td>
+                    <td>{{ item.middleName }}</td>
+                    <td>{{ item.lastName }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.mobileNo }}</td>
+                    <td>{{ item.role }}</td>
+                    <td>{{ item.saveDt }}</td>
+                    <td>
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+                @else if (curModule() === itemMaster()) {
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td style="text-align: left;">{{ item.name }}</td>
+                    <td>{{ item.category.name }}</td>
+                    <td>
+                        <button mat-icon-button (click)="openImage(item.fileId,item.name)"
+                            [style.color]="item.fileId ? 'green' : 'red'"><mat-icon>image</mat-icon></button>
+                    </td>
+                    <td>{{ item.saveDt }}</td>
+                    <td>
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+                @else if (curModule() === itemCategoryMaster()) {
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.saveDt }}</td>
+                    <td>
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+                @else if (curModule() === gstMaster()) {
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td>{{ item.rate + ' %' }}</td>
+                    <td>{{ item.applicableDt | date: 'dd-MM-yyyy' }}</td>
+                    <td><mat-icon>{{ item.isActive ? 'check' : 'close' }}</mat-icon></td>
+                    <td>{{ item.saveDt }}</td>
+                    <td>
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+                @else if (curModule() === courierMaster()) {
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td>{{ item.companyName }}</td>
+                    <td>{{ item.contactPerson }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.trackingWebsite }}</td>
+                    <td>{{ item.mobileNo }}</td>
+                    <td>{{ item.saveDt }}</td>
+                    <td>
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+                @else if (curModule() === brandMaster()) {
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.saveDt }}</td>
+                    <td>
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+                @else if (curModule() === customerMaster()) {
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td>{{ item.customerName }}</td>
+                    <td>{{ item.customerLoginPageUrl }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.gstNo }}</td>
+                    <td>{{ item.state }}</td>
+                    <td>{{ item.city }}</td>
+                    <td>
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+                @else if (curModule() === customerItemMaster()) {
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td>{{ item.cname }}</td>
+                    <td>{{ item.count }}</td>
+                    <td>
+                        <button mat-icon-button (click)="viewData(item.cid)" title="view">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">visibility</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+                @else if (this.curModule() === orderMaster()) {
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td>{{ $index + 1 + offset() * limit() }}.</td>
+                    <td>{{ item.customerId }}</td>
+                    <td>{{ item.customerName }}</td>
+                    <td>{{ 'ORD' + item.orderNo }}</td>
+                    <td>{{ item.orderDate }}</td>
+                    <td>{{ item.empCode }}</td>
+                    <td>{{ item.empName }}</td>
+                    <td>
+                        <button mat-icon-button (click)="viewOrder(item.orderNo)" title="view">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">visibility</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="paginator">
+        @if(items.length){
+        @if(this.curModule() !== customerItemMaster()){
+        <app-paginator (page)="navigate($event)" [size]="size()" [records]="records()" [from]="from()"
+            [to]="to()"></app-paginator>
+        }
+        } @else {
+        <h2>No Data in the table...</h2>
+        }
+    </div>
+</div>

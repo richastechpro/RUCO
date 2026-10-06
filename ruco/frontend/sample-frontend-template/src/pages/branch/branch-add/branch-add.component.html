@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="header">Add Branch</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>Branch Name<span class="imp">*</span></label>
+            <input type="text" formControlName="branchName" required>
+        </div>
+        <div class="input-field">
+            <label>Branch Address<span class="imp">*</span></label>
+            <textarea type="text" formControlName="branchAddress" style="height: 100px;" required></textarea>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 1rem;">
+            <div class="input-field">
+                <label>State<span class="imp">*</span></label>
+                <input type="text" placeholder="Select State" formControlName="state" [matAutocomplete]="auto1"
+                    required>
+                <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayStateFn"
+                    (optionSelected)="onSelectState($event)">
+                    <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                        {{ state.stateName }}
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
+            <div class="input-field">
+                <label>City<span class="imp">*</span></label>
+                <input type="text" placeholder="Select City" formControlName="city" [matAutocomplete]="auto2" required>
+                <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayCityFn"
+                    (optionSelected)="onSelectCity($event)">
+                    <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                        {{ city.cityName }}
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
+            <div class="input-field">
+                <label>Area</label>
+                <input type="text" placeholder="Select Area" formControlName="area" [matAutocomplete]="auto3">
+                <mat-autocomplete #auto3="matAutocomplete" [displayWith]="displayAreaFn">
+                    <mat-option *ngFor="let area of filteredAreas | async" [value]="area">
+                        {{ area.areaName }}
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 1rem;">
+            <div class="input-field">
+                <label>GST No.<span class="imp">*</span></label>
+                <input type="text" formControlName="gstNo" maxlength="15" required>
+            </div>
+            <div class="input-field">
+                <label>PAN No.<span class="imp">*</span></label>
+                <input type="text" formControlName="panNo" maxlength="10" required>
+            </div>
+            <div class="input-field">
+            <label>Warehouse Name<span class="imp">*</span></label>
+            <input type="text" formControlName="warehouseName" required>
+        </div>
+        </div>
+        <div class="input-field">
+            <label>Warehouse Address<span class="imp">*</span></label>
+            <textarea type="text" formControlName="warehouseAddress" style="height: 100px;" required></textarea>
+        </div>
+        <div class="input-field"></div>
+        <div class="action-btns">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,90 @@
+@use "../../../constants/colors.scss" as color;
+
+.container {
+  margin: 25px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 25px 40px;
+}
+
+.header {
+  font-family: ROBOTO-MEDIUM;
+  color: #000;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.add-btn {
+
+  button {
+    margin-bottom: 10px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-family: ROBOTO-REGULAR;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    background-color: #007bff;
+    color: white;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+
+    margin-right: 15px;
+  }
+}
+
+.data {
+  height: auto;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr > th,
+  tr > td {
+    border: 1px solid;
+    border-color: color.$borderColor;
+    text-align: center;
+    background-color: color.$tableHeaderBackgroundColor;
+  }
+
+  tr > th {
+    font-family: ROBOTO-MEDIUM;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 10px;
+    color: color.$tableHeaderColor;
+  }
+
+  tr > td {
+    font-family: ROBOTO-LIGHT;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0 10px;
+  }
+
+  tr > .row-data:hover {
+    background-color: #ccc;
+  }
+}
+
+form{
+  width: 50%;
+}
+
+.paginator > h2 {
+  text-align: center;
+  font-family: ROBOTO-MEDIUM;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: 15px;
+  color: #76838f;
+}

@@ -1,0 +1,41 @@
+<div class="container">
+    <header>
+        <label>Assign</label>
+    </header>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>Pickup Boy 1</label>
+            <input type="text" placeholder="Select Pickup Boy" formControlName="pickupBoy1" [matAutocomplete]="auto1">
+            <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayUserFn">
+                <mat-option *ngFor="let user of filteredPickupBoys1 | async" [value]="user">
+                    {{ user.username }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        
+        <div class="input-field">
+            <label>Pickup Boy 2</label>
+            <input type="text" placeholder="Select Pickup Boy" formControlName="pickupBoy2" [matAutocomplete]="auto2">
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayUserFn">
+                <mat-option *ngFor="let branch of filteredPickupBoys2 | async" [value]="branch">
+                    {{ branch.username }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+
+        <div class="input-field">
+            <label>Transporter</label>
+            <input type="text" placeholder="Select Transporter" formControlName="transporter" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayTransporterFn">
+                <mat-option *ngFor="let branch of filteredTransporters | async" [value]="branch">
+                    {{ branch.transporterName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        
+        <div class="action-btns" style="margin-top: 30px;">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

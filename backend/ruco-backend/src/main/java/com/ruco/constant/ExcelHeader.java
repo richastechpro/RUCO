@@ -1,0 +1,62 @@
+package com.ruco.constant;
+
+public class ExcelHeader {
+
+	public static final int EMP_CODE = 0;
+	public static final int LOB = 1;
+	public static final int LOC = 2;
+	public static final int CC = 3;
+	public static final int DEPT = 4;
+	public static final int BOOKING_REF_NO = 5;
+	public static final int INVOICE_NUMBER = 6;
+	public static final int PASSENGER_NAME = 7;
+	public static final int GRADE = 8;
+	public static final int INVOICE_CREDITNOTE_DATE = 9;
+	public static final int AIRLINE_BASE_FARE = 10;
+	public static final int AIRLINE_TAX = 11;
+	public static final int AIR_LINE_GST = 12;
+	public static final int AIRLINE_IGST = 13;
+	public static final int AIR_LINE_CGST = 14;
+	public static final int AIRLINE_SGST_UTGST = 15;
+	public static final int TRANSACTION_FEE = 16;
+	public static final int IGST = 17;
+	public static final int CGST = 18;
+	public static final int SGST = 19;
+	public static final int REFUND_IGST = 20;
+	public static final int REFUND_CGST = 21;
+	public static final int REFUND_SGST = 22;
+	public static final int RESCHEDULE_CHARGES = 23;
+	public static final int SEAT = 24;
+	public static final int MEAL = 25;
+	public static final int BAGGAGE = 26;
+	public static final int CANCELLATION_CHARGES = 27;
+	public static final int DEBIT_AMOUNT = 28;
+	public static final int CREDIT_AMOUNT = 29;
+	public static final int NET_AMOUNT = 30;
+	public static final int ONWARD_CREDIT_CARD = 31;
+	public static final int RETURN_CREDIT_CARD = 32;
+	public static final int LESS_CREDIT_CARD = 33;
+	public static final int TRAVEL_DATE = 34;
+	public static final int ORIGIN = 35;
+	public static final int DESTINATION = 36;
+	public static final int STATE = 37;
+	public static final int TRIP = 38;
+	public static final int CLASS = 39;
+	public static final int FARE_TYPE = 40;
+	public static final int AIRLINE_CODE = 41;
+	public static final int TICKET_NUMBER = 42;
+	public static final int TRAVEL_PURPOSE = 43;
+	public static final int CRD_AGAINST_INOVICE_NO = 44;
+	public static final int INVOICE_DATE = 45;
+	public static final int MODE = 46;
+	public static final int KPAY = 47;
+	public static final int DATE = 48;
+	public static final int APPROVER_EMP_CODE = 49;
+	public static final int APPROVER_NAME = 50;
+	public static final int APPROVER_GRADE = 51;
+	public static final int CARBON_FOOT_PRINT = 52;
+	public static final int LEAD_TIME_DAYS = 53;
+	public static final int ONLINE_OFFLINE = 54;
+	public static final int CREM_REMARK = 55;
+
+}

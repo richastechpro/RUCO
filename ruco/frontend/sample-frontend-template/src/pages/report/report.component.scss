@@ -1,0 +1,32 @@
+@use "../../constants/colors.scss" as color;
+
+.breadcrumb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: ROBOTO-MEDIUM;
+  margin: 10px 25px;
+
+  .title {
+    font-size: 1.1rem;
+    color: #000;
+  }
+}
+
+.container {
+  background-color: #fff;
+  margin: 15px;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+label{
+  font-family: ROBOTO-MEDIUM;
+}
+
+input{
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: large;
+}

@@ -1,0 +1,50 @@
+.container {
+  padding: 25px 50px;
+}
+
+header {
+  label {
+    font-family: ROBOTO-MEDIUM;
+    font-size: 1.2rem;
+  }
+
+  margin-bottom: 15px;
+}
+
+form {
+  all: unset;
+}
+
+.data{
+    margin: 15px 0 5px;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+  tr > th,
+  tr > td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+  }
+
+  tr>th{
+    font-family: ROBOTO-REGULAR;
+    font-weight: 400;
+    font-size: 0.95rem;
+  }
+
+  tr>td{
+    font-family: ROBOTO-REGULAR;
+    font-size: 0.85rem;
+
+  }
+}
+
+.input-field {
+  margin-bottom: 0px;
+}

@@ -1,0 +1,146 @@
+<div class="container">
+  <div class="row">
+    @for (item of items; track $index) {
+    <div matRipple class="card" [ngClass]="item.gradient" (click)="navigate(item.route)">
+      <div class="card-body">
+        <h3 class="card-title text-white">{{ item.label }}</h3>
+        <div class="d-inline-block">
+          <h2 class="text-white">{{ item.count }}</h2>
+        </div>
+        <span class="float-right display-5 opacity-5"><img class="dicon" [src]="item.imgUrl"></span>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <div class="row" style="padding-left: 15px;">
+    <div class="row">
+        <div matRipple class="card gradient-1">
+          <div class="card-body">
+            <h3 class="card-title text-white">Companies</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/d-company.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-2">
+          <div class="card-body">
+            <h3 class="card-title text-white">Branches</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/briefcase.svg" /></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-3">
+          <div class="card-body">
+            <h3 class="card-title text-white">FBOs</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/drop.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-4">
+          <div class="card-body">
+            <h3 class="card-title text-white">FBO Signup Requests</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/drop.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-5">
+          <div class="card-body">
+            <h3 class="card-title text-white">Transporters</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/d-transporter.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-6">
+          <div class="card-body">
+            <h3 class="card-title text-white">Open Issues</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/issues.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-7">
+          <div class="card-body">
+            <h3 class="card-title text-white">Collections</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/dcollection.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-8">
+          <div class="card-body">
+            <h3 class="card-title text-white">Not Assigned Collections</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/dcollection.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-1">
+          <div class="card-body">
+            <h3 class="card-title text-white">Not Collected Collections</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">10</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/dcollection.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-2">
+          <div class="card-body">
+            <h3 class="card-title text-white">UCO Inventory</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">20 Kgs</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/d-inventory.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-3">
+          <div class="card-body">
+            <h3 class="card-title text-white">BioDiesel Inventory</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">25 Kgs</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/d-inventory.svg"></span>
+          </div>
+        </div>
+        <div matRipple class="card gradient-4">
+          <div class="card-body">
+            <h3 class="card-title text-white">Chemical Inventory</h3>
+            <div class="d-inline-block">
+              <h2 class="text-white">30 Kgs</h2>
+            </div>
+            <span class="float-right display-5 opacity-5"><img class="dicon" src="images/d-inventory.svg"></span>
+          </div>
+        </div>
+      </div>
+  </div>
+</div> -->

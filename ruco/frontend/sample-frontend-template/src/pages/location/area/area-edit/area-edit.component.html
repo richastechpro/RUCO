@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="header">Edit Area</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>State<span class="imp">*</span></label>
+            <input type="text" placeholder="Select State" formControlName="state" required style="width: 350px;" readonly>
+        </div>
+        <div class="input-field">
+            <label>City<span class="imp">*</span></label>
+            <input type="text" placeholder="Select City" formControlName="city"  required style="width: 350px;" readonly>
+        </div>
+        <div class="input-field">
+            <label>Area<span class="imp">*</span></label>
+            <input type="text" formControlName="areaName" style="width: 350px;">
+        </div>
+        <div class="action-btns">
+            <button type="submit">Update</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

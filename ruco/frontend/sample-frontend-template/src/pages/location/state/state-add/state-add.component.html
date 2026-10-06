@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="header">Add State</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>State<span class="imp">*</span></label>
+            <input type="text" formControlName="state" required style="width: 350px;">
+        </div>
+        <div class="action-btns">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

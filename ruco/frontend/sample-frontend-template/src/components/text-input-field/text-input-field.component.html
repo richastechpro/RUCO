@@ -1,0 +1,8 @@
+<div class="input-field">
+    <label [for]="label()">{{ label() }}
+        @if(required()){
+            <span class="imp">*</span>
+        }
+    </label>
+    <input type="text" class="input-txt" [formControl]="formControl()" [required]="required()">
+</div>

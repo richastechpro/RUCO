@@ -1,0 +1,38 @@
+@use "../../constants/colors.scss" as color;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.action-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 10px 0;
+  margin-top: 40px;
+
+  button {
+    height: 3rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.25rem;
+    font-family: ROBOTO-REGULAR;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &[type="button"] {
+      background-color: color.$primary;
+      color: #f8f9fa;
+      border: 1px solid color.$primary;
+
+      &:hover {
+        background-color: color.$blue;
+      }
+    }
+  }
+}

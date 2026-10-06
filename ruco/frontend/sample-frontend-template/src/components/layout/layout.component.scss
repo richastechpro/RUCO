@@ -1,0 +1,183 @@
+@use "../../constants/colors.scss" as color;
+
+.toolbar {
+  height: 5rem;
+  width: auto;
+  display: flex;
+  align-items: center;
+  // border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  padding: 0 25px 0 10px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    .app-logo {
+      width: 150px;
+      height: 50px;
+      padding: 1rem;
+    }
+    .app-logo-min {
+      width: 40px;
+      height: 50px;
+      padding: 1rem;
+    }
+    button {
+      margin: 5px 0 0 15px;
+      border-radius: 5px;
+      color: color.$sidebarBackgroundColor;
+      color: #000;
+    }
+  }
+
+  .spacing {
+    flex: 1 1 auto;
+  }
+
+  .notification {
+    position: relative;
+    display: inline-block;
+
+    margin-top: 5px;
+    margin-right: 20px;
+    font-size: 1rem;
+
+    mat-icon {
+      font-size: 26px;
+    }
+
+    cursor: pointer;
+
+    .badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 21px;
+      height: 21px;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      font-family: ROBOTO-MEDIUM;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(50%, -50%);
+      background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
+      animation: glowing 1300ms infinite;
+    }
+
+    @keyframes glowing {
+      0% {
+        background-color: #4540f7;
+        box-shadow: 0 0 5px #4540f7;
+      }
+
+      50% {
+        background-color: #4540f7;
+        box-shadow: 0 0 20px #4540f7;
+      }
+      100% {
+        background-color: #4540f7;
+        box-shadow: 0 0 5px #4540f7;
+      }
+    }
+  }
+
+  .user {
+    .user-area {
+      .user {
+        color: #76838f;
+        display: flex;
+        align-items: center;
+
+        .username {
+          font-size: 1.1rem;
+          font-family: ROBOTO-REGULAR;
+          margin-top: 2.5px;
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.options {
+  font-family: ROBOTO-MEDIUM;
+  font-weight: 400;
+}
+
+.body {
+  display: flex;
+  height: calc(99.9vh - 5rem);
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  // border-right: 5px solid #a294f9;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  // overflow-x: hidden;
+  // background-color: color.$sidebarBackgroundColor;
+  background-color: #fff;
+  font-family: ROBOTO-MEDIUM;
+  transition: width 0.4s ease-in-out;
+  // scrollbar-color: #fff #ccc;
+  // scrollbar-width: thin;
+}
+
+.content {
+  width: calc(100vw - 80px);
+  background-color: color.$bodyBgColor;
+  padding: 20px 40px;
+  overflow-y: scroll;
+}
+
+.sidemenus {
+  height: calc(100vh - 5rem);
+  padding: 0 15px 0 30px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 5px 0;
+  color: color.$sideMenuUnselectColor;
+
+  &:hover {
+    background-color: color.$bodyBgColor;
+    cursor: pointer;
+  }
+}
+
+.label {
+  font-size: medium;
+  font-weight: 500;
+  margin: 0 15px 0 10px;
+  white-space: nowrap;
+  color: #464a53;
+}
+
+.f-1 {
+  font-size: 0.9rem;
+}
+
+.submenu {
+  margin-left: 15px;
+}
+
+.submenusmenu {
+  margin-left: 45px;
+}
+
+.selected {
+  color: #464a53;
+}

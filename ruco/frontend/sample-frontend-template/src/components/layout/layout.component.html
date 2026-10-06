@@ -1,0 +1,139 @@
+<div class="container">
+    <div class="toolbar">
+        <div class="header">
+            @if(sideMenuOpened()){
+            <img class="app-logo" src="./images/blue_stone_logo.png">
+            }
+            @else {
+            <img class="app-logo-min" src="./images/blogo-compact.png">
+            }
+            <button mat-icon-button (click)="sideMenuOpened.set(!sideMenuOpened())">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <div class="spacing"></div>
+        <div class="notification" [matMenuTriggerFor]="notification">
+            <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
+            <div class="badge">{{ '3' }}</div>
+            <mat-menu #notification="matMenu" yPosition="below" xPosition="before">
+                <button mat-menu-item>
+                    <mat-icon style="color: #464a53;">post_add</mat-icon>
+                    <span style="color: #464a53;" class="options">{{ '3 FBO Signup Request' }}</span>
+                </button>
+            </mat-menu>
+        </div>
+        <div class="user">
+            <div [matMenuTriggerFor]="menu" class="user-area">
+                <div class="user">
+                    <span class="username">{{ 'Welcome ' + username }}</span> &nbsp;&nbsp;
+                    <mat-icon>person</mat-icon>
+                </div>
+            </div>
+            <mat-menu #menu="matMenu" yPosition="below">
+                <button mat-menu-item (click)="updatePWD()">
+                    <mat-icon style="color: #464a53;">person_edit</mat-icon>
+                    <span style="color: #464a53;" class="options">Update Password</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon style="color: #464a53;">logout</mat-icon>
+                    <span style="color: #464a53;" class="options">Logout</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="body">
+        <div class="sidebar" [style.width.px]="sideMenusWidth()">
+            <div class="sidemenus">
+                <br>
+                @for (item of items; track $index) {
+                <!-- if side menu closed, show only icons with center position -->
+                @if(sideMenuOpened() && item.subItems?.length){
+                <div class="center" (click)="item.subItems.length === 0 ? navigate([item.route],[item]) : ''"
+                    [style.justify-content]="!sideMenuOpened() ? 'center' : ''" [title]="item.label"
+                    (click)="item.showSubItem.set(!item.showSubItem())">
+                    <mat-icon [ngClass]="item.selected() ? 'selected' : ''"
+                        [fontSet]="item.selected() ? '' : 'material-icons-outlined'">{{item.icon}}</mat-icon>
+                    <!-- show item label, arrow only if sidemenu opened -->
+                    @if(sideMenuOpened()){
+                    <span [ngClass]="item.selected() ? 'selected' : ''" class="label">{{item.label}}</span>
+                    }
+                    <!-- show arrow only if item.subItems.length > 0 and sidemenu opened -->
+                    <mat-icon [ngClass]="item.selected() ? 'selected' : ''">{{item.showSubItem() ?
+                        'keyboard_arrow_up':'keyboard_arrow_down'}}</mat-icon>
+                </div>
+                }
+
+                @else{
+                <div class="center" (click)="item.subItems.length === 0 ? navigate([item.route],[item]) : ''"
+                    [style.justify-content]="!sideMenuOpened() ? 'center' : ''" [title]="item.label">
+                    <mat-icon [ngClass]="item.selected() ? 'selected' : ''"
+                        [fontSet]="item.selected() ? '' : 'material-icons-outlined'">{{item.icon}}</mat-icon>
+                    <!-- show item label, arrow only if sidemenu opened -->
+                    @if(sideMenuOpened()){
+                    <span [ngClass]="item.selected() ? 'selected' : ''" class="label">{{item.label}}</span>
+                    }
+                    <!-- show arrow only if item.subItems.length > 0 and sidemenu opened -->
+                    @if(sideMenuOpened() && item.subItems?.length){
+                    <mat-icon [ngClass]="item.selected() ? 'selected' : ''"
+                        (click)="item.showSubItem.set(!item.showSubItem())">{{item.showSubItem() ?
+                        'keyboard_arrow_up':'keyboard_arrow_down'}}</mat-icon>
+                    }
+                </div>
+                }
+
+                <!-- sidemenu opened and item.arrow clicked, so show subItems -->
+                @if(sideMenuOpened() && item.showSubItem()){
+                @for (subItem of item.subItems; track $index) {
+                @if(subItem.subItemsItems?.length){
+                <div (click)="subItem.subItemsItems.length === 0 ? navigate([item.route,subItem.route],[item,subItem]) : ''"
+                    (click)="subItem.showSubItemsItem.set(!subItem.showSubItemsItem())">
+                    <ul class="center submenu">
+                        <mat-icon [ngClass]="subItem.selected() ? 'selected' : ''">{{subItem.icon}}</mat-icon>
+                        <span class="label f-1"
+                            [ngClass]="subItem.selected() ? 'selected' : ''">{{subItem.label}}</span>
+                        @if(subItem.subItemsItems?.length){
+                        <mat-icon [ngClass]="item.selected() ? 'selected' : ''">{{subItem.showSubItemsItem()
+                            ?'keyboard_arrow_up' :'keyboard_arrow_down'}}</mat-icon>
+                        }
+                    </ul>
+                </div>
+                }
+
+                @else {
+                <div
+                    (click)="subItem.subItemsItems.length === 0 ? navigate([item.route,subItem.route],[item,subItem]) : ''">
+                    <ul class="center submenu">
+                        <mat-icon [ngClass]="subItem.selected() ? 'selected' : ''">{{subItem.icon}}</mat-icon>
+                        <span class="label f-1"
+                            [ngClass]="subItem.selected() ? 'selected' : ''">{{subItem.label}}</span>
+                        @if(subItem.subItemsItems?.length){
+                        <mat-icon [ngClass]="item.selected() ? 'selected' : ''"
+                            (click)="subItem.showSubItemsItem.set(!subItem.showSubItemsItem())">{{subItem.showSubItemsItem()
+                            ?'keyboard_arrow_up' :'keyboard_arrow_down'}}</mat-icon>
+                        }
+                    </ul>
+                </div>
+                }
+
+                @if(subItem.subItemsItems?.length && subItem.showSubItemsItem()){
+                @for (subItemsItem of subItem.subItemsItems; track $index) {
+                <div>
+                    <ul class="center submenusmenu">
+                        <mat-icon [ngClass]="subItemsItem.selected() ? 'selected' : ''">{{subItemsItem.icon}}</mat-icon>
+                        <span class="label f-1" [ngClass]="subItemsItem.selected() ? 'selected' : ''"
+                            (click)="navigate([item.route, subItem.route, subItemsItem.route], [item,subItem,subItemsItem])">{{subItemsItem.label}}</span>
+                    </ul>
+                </div>
+                }
+                }
+                }
+                }
+                }
+                <br>
+            </div>
+        </div>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

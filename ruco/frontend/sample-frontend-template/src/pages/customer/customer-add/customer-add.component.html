@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="header">Add Customer</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>Customer Name<span class="imp">*</span></label>
+            <input type="text" formControlName="customerName" required>
+        </div>
+        <div class="input-field">
+            <label>Address<span class="imp">*</span></label>
+            <textarea type="text" formControlName="customerAddress" required style="height: 100px;"></textarea>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 1.5rem;">
+            <div class="input-field">
+                <label>Customer Type<span class="imp">*</span></label>
+                <select formControlName="customerType" required>
+                    @for (type of userTypes; track type) {
+                    <option [value]="type">{{ type }}</option>
+                    }
+                </select>
+            </div>
+            <div class="input-field">
+                <label>Email<span class="imp">*</span></label>
+                <input type="text" formControlName="email" required>
+            </div>
+            <div class="input-field">
+                <label>Contact No.<span class="imp">*</span></label>
+                <input type="text" formControlName="mobileNo" maxlength="10" required (keypress)="onlyNumbers($event)">
+            </div>
+        </div>
+        <div class="action-btns">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

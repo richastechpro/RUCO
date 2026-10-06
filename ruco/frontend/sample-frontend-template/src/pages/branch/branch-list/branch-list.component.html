@@ -1,0 +1,71 @@
+<div class="breadcrumb">
+    <div class="title">Branch List</div>
+    <div class="routes">
+        <button type="button" (click)="add()">Add Branch</button>
+    </div>
+</div>
+<div class="container">
+    <header>
+        <div class="center">
+            <select (change)="onSelectRow($event)">
+                @for (row of rows; track row) {
+                <option [selected]="row === limit()" [value]="row">{{ row }}</option>
+                }
+            </select>
+        </div>
+        <div>
+            <div class="input-container">
+                <input type="text" placeholder="Enter search term ..." [(ngModel)]="searchTxt" />
+                <button mat-icon-button class="search" (click)="search()" [disabled]="!(searchTxt && searchTxt.length)">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+    <br />
+    <div class="data">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Branch Name</th>
+                    <th>Address</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Warehouse</th>
+                    <th style="width: 10%;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (item of items; track $index) {
+                <tr class="row-data">
+                    <td style="text-align: center;">{{ $index + 1 + offset() * limit() }}.</td>
+                    <td style="text-align: left; padding-left: 15px;">{{ item.branchName }}</td>
+                    <td style="text-align: left; padding-left: 15px;">{{ item.branchAddress }}</td>
+                    <td style="text-align: left; padding-left: 15px;">{{ item.state?.stateName || "-" }}</td>
+                    <td style="text-align: left; padding-left: 15px;">{{ item.city?.cityName || "-" }}</td>
+                    <td style="text-align: left; padding-left: 15px;">{{ item.warehouseName }}</td>
+                    <td style="text-align: center;">
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="paginator">
+        @if(items.length){
+        <app-paginator (page)="navigate($event)" [size]="size()" [records]="records()" [from]="from()"
+            [to]="to()"></app-paginator>
+        }
+        @else {
+        <h2>No Data in the table...</h2>
+        }
+    </div>
+</div>

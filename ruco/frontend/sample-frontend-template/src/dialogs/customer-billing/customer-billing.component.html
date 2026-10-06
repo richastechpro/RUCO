@@ -1,0 +1,32 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="input-field">
+        <label for="address">Billing Address<span class="imp">*</span></label>
+        <input type="text" formControlName="address" required>
+      </div>
+      <div class="input-field">
+        <label for="mobileNo">Mobile No.<span class="imp">*</span></label>
+        <input type="text" maxlength="10" minlength="10" class="input-txt" formControlName="mobileNo" pattern="\d{10}"
+          (keydown)="validateNumberInput($event)" required>
+      </div>
+      <div class="input-field">
+        <label for="state">State<span class="imp">*</span></label>
+        <input type="text" formControlName="state" required>
+      </div>
+      
+      <div class="input-field">
+        <label for="city">City<span class="imp">*</span></label>
+        <input type="text" formControlName="city" required>
+      </div>
+      <div class="input-field">
+        <label for="pincode">Pincode<span class="imp">*</span></label>
+        <input type="text" class="input-txt" formControlName="pincode" pattern="\d{10}"
+          (keydown)="validateNumberInput($event)" required>
+      </div>
+      <div class="action-btns">
+        <button type="submit">Submit</button>
+        <button type="button" (click)="close()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

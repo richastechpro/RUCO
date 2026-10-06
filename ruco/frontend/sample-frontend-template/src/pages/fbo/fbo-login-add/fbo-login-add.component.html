@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="header">Add FBO Login</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>Email</label>
+            <input type="text" formControlName="email" required>
+        </div>
+        <div class="input-field">
+            <label>Password</label>
+            <input type="text" formControlName="password" required>
+        </div>
+        <div class="input-field">
+            <label>Username</label>
+            <input type="text" formControlName="username" required>
+        </div>
+        <div class="input-field">
+            <label>Mobile No.</label>
+            <input type="text" formControlName="mobileNo" maxlength="10" required (keypress)="onlyNumbers($event)">
+        </div>
+        <div class="input-field">
+            <label>Type</label>
+            <select formControlName="type" required (change)="changeType($event)">
+                @for (userType of userTypes; track userType) {
+                <option [value]="userType">{{ userType }}</option>
+                }
+            </select>
+        </div>
+        @if(state()){
+        <div class="input-field">
+            <label>State</label>
+            <input type="text" placeholder="Select State" formControlName="state" [matAutocomplete]="auto1">
+            <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayStateFn" (optionSelected)="onSelectState($event)">
+                <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                    {{ state.stateName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        }
+        @if(city()){
+        <div class="input-field">
+            <label>City</label>
+            <input type="text" placeholder="Select City" formControlName="city" [matAutocomplete]="auto2">
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayCityFn">
+                <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                    {{ city.cityName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        }
+        @if(branch()){
+        <div class="input-field">
+            <label>FBO Branch</label>
+            <input type="text" placeholder="Select Branch" formControlName="fboBranch" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFboBranchFn">
+                <mat-option *ngFor="let branch of filteredFboBranches | async" [value]="branch">
+                    {{ branch.fboBranchName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        }
+
+        <div style="margin-top: 30px; width: 800px;" class="add-btn">
+            <button type="submit">Submit</button>
+            <button type="button" style="background-color: red;" (click)="cancel()">Cancel</button>
+            <button type="button" style="background-color: orange;" matRipple (click)="downloadFormat()">Download
+                Format</button>
+            <button type="button" style="background-color: green;" (click)="fileInput.click()">Import From
+                Excel</button>
+            <input type="file" #fileInput hidden (change)="onFileSelected($event)" />
+        </div>
+    </form>
+    <br>
+    <div class="data">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Type</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Branch</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of items; track $index) {
+                <tr>
+                    <td>{{ $index + 1 }}.</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.username }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.state ? item.state.stateName : '-' }}</td>
+                    <td>{{ item.city ? item.city.cityName : '-' }}</td>
+                    <td>{{ item.fboBranch ? item.fboBranch.fboBranchName : '-' }}</td>
+                    <td>
+                        <button mat-icon-button (click)="editData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">edit_note</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="removeData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="paginator">
+        @if(items.length === 0) {
+        <h2>No Data in the table...</h2>
+        }
+    </div>
+</div>

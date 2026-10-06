@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="breadcrumb">
+        <div class="title">Edit FBO Branch <span>({{ fboName }})</span></div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>FBO Branch Name<span class="imp">*</span></label>
+            <input type="text" formControlName="fboBranchName" required>
+        </div>
+        <div class="input-field">
+            <label>FBO Branch Address<span class="imp">*</span></label>
+            <textarea type="text" formControlName="fboBranchAddress" required style="height: 100px;"></textarea>
+        </div>
+        <div class="input-field">
+            <label>Representative<span class="imp">*</span></label>
+            <input type="text" formControlName="representative" required>
+        </div>
+        <div class="input-field">
+            <label>State<span class="imp">*</span></label>
+            <input type="text" placeholder="Select State" formControlName="state" [matAutocomplete]="auto1">
+            <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayStateFn"
+                (optionSelected)="onSelectState($event)">
+                <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                    {{ state.stateName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field">
+            <label>City<span class="imp">*</span></label>
+            <input type="text" placeholder="Select City" formControlName="city" [matAutocomplete]="auto2">
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayCityFn"
+                (optionSelected)="onSelectCity($event)">
+                <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                    {{ city.cityName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field">
+            <label>Branch<span class="imp">*</span></label>
+            <input type="text" placeholder="Select Branch" formControlName="branch" [matAutocomplete]="auto3">
+            <mat-autocomplete #auto3="matAutocomplete" [displayWith]="displayBranchFn">
+                <mat-option *ngFor="let branch of filteredBranches | async" [value]="branch">
+                    {{ branch.branchName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field">
+            <label>Email<span class="imp">*</span></label>
+            <input type="text" formControlName="email" required>
+        </div>
+        <div class="input-field">
+            <label>Mobile No.<span class="imp">*</span></label>
+            <input type="text" formControlName="mobileNo" required maxlength="10">
+        </div>
+        <div class="input-field">
+            <label>GST No.<span class="imp">*</span></label>
+            <input type="text" formControlName="gstNo" required maxlength="15">
+        </div>
+        <div class="input-field">
+            <label>FSSAI No.<span class="imp">*</span></label>
+            <input type="text" formControlName="fssaiNo" required maxlength="15">
+        </div>
+        <div class="input-field">
+            <label>Rate<span class="imp">*</span></label>
+            <input type="number" step="0.01" formControlName="rate" required>
+        </div>
+        <div class="action-btns" style="margin-top: 30px;">
+            <button type="submit">Update</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

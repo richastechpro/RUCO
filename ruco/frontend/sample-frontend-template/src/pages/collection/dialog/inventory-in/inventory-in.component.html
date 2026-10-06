@@ -1,0 +1,58 @@
+<div class="container">
+    <header>
+        <label>Create Inventory Inward Register</label>
+    </header>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>Branch</label>
+            <input type="text" formControlName="branchName" required readonly>
+        </div>
+
+        <div class="input-field">
+            <label>Warehouse</label>
+            <input type="text" formControlName="warehouse" readonly required>
+        </div>
+
+        <div class="data">
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Fbo Branch Name</th>
+                        <th>Assigned Qty</th>
+                        <th>Collected Qty</th>
+                        <th>Inventory In</th>
+                    </tr>
+                    @for (item of details; track $index) {
+                    <tr>
+                        <td>{{ $index + 1 }}.</td>
+                        <td style="text-align: left;">{{ item.fboBranchName }}</td>
+                        <td>{{ item.assignedQty }}</td>
+                        <td>{{ item.collectedQty }}</td>
+                        <td>@if(item.inventoryIn){
+                            <mat-icon>done_outline</mat-icon>
+                            }
+                        </td>
+                    </tr>
+                    }
+                </thead>
+            </table>
+        </div>
+
+        @if(inventoryInQty > 0){
+            <div class="input-field">
+            <label>Inward Qty</label>
+            <input type="text" formControlName="inventoryInQty" (keypress)="onlyNumbers($event)" required>
+        </div>
+
+        <div class="action-btns" style="margin-top: 30px;">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+        }
+
+        @else {
+            <div style="color: red; font-family: ROBOTO-MEDIUM; font-size: 0.95rem; font-weight: 400;">Please collect pending qty and proceed</div>
+        }
+    </form>
+</div>

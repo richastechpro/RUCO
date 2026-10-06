@@ -1,0 +1,100 @@
+@use "../../constants/colors.scss" as color;
+
+.container {
+  width: 98%;
+  margin: 25px auto 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  column-gap: 25px;
+  flex: 1 1 auto;
+}
+
+.card {
+  margin-bottom: 30px;
+  box-shadow: 6px 11px 41px -28px #a99de7;
+  width: 280px;
+  height: 130px;
+  // width: 320px;
+  // height: 150px;
+  white-space: nowrap;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 1rem 1.5rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 0.25rem;
+  font-family: ROBOTO-MEDIUM;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.opacity-5 {
+  opacity: 0.8;
+}
+
+.display-5 {
+  font-size: 3rem;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.text-white {
+  font-family: ROBOTO-MEDIUM;
+  color: #fff !important;
+}
+
+.gradient-1 {
+  color: #fff !important;
+  background-image: linear-gradient(230deg, #759bff, #843cf6);
+}
+
+.gradient-2 {
+  background-image: linear-gradient(230deg, #fc5286, #fbaaa2);
+}
+
+.gradient-3 {
+  background-image: linear-gradient(230deg, #ffc480, #ff763b);
+}
+
+.gradient-4 {
+  background-image: linear-gradient(230deg, #0e4cfd, #6a8eff);
+}
+
+.gradient-5 {
+  background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+}
+
+.gradient-6 {
+  background-image: linear-gradient(135deg, #97abff 10%, #123597 100%);
+}
+
+.gradient-7 {
+  background-image: linear-gradient(135deg, #3c8ce7 10%, #00eaff 100%);
+}
+
+.gradient-8 {
+  background-image: linear-gradient(135deg, #ee9ae5 10%, #5961f9 100%);
+}
+
+@media (min-width: 576px) {
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}

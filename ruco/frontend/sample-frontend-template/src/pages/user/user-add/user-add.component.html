@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="header">Add User</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>Login Id.<span class="imp">*</span></label>
+            <input type="text" formControlName="loginId" required>
+        </div>
+        <div class="input-field">
+            <label>Password<span class="imp">*</span></label>
+            <input type="password" minlength="6" formControlName="password" required>
+        </div>
+        <div class="input-field">
+            <label>User Name<span class="imp">*</span></label>
+            <input type="text" formControlName="username" required>
+        </div>
+        <div class="input-field">
+            <label>Contact No.<span class="imp">*</span></label>
+            <input type="text" formControlName="mobileNo" maxlength="10" required (keypress)="onlyNumbers($event)">
+        </div>
+        <div class="input-field">
+            <label>Email Id.<span class="imp">*</span></label>
+            <input type="email" formControlName="email" required>
+        </div>
+        <div class="input-field">
+            <label>User Type<span class="imp">*</span></label>
+            <select formControlName="userType" required>
+                @for (userType of userTypes; track userType) {
+                <option [value]="userType">{{ userType }}</option>
+                }
+            </select>
+        </div>
+        @if(showBranch()){
+        <div class="input-field">
+            <label>Branch<span class="imp">*</span></label>
+            <input type="text" placeholder="Select Branch" formControlName="branch" [matAutocomplete]="auto3"
+                [required]="form.get('userType')?.value !== 'SUPERADMIN'">
+            <mat-autocomplete #auto3="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let branch of filteredBranches | async" [value]="branch">
+                    {{ branch.branchName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+        }
+        <div class="action-btns">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

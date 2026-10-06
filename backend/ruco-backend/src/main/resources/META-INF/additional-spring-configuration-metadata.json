@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "jwt.secret-key",
+    "type": "java.lang.String",
+    "description": "JWT secrek key"
+  },
+  {
+    "name": "client.url",
+    "type": "java.lang.String",
+    "description": "Allowed client url"
+  },
+  {
+    "name": "frontend.servlet-path",
+    "type": "java.lang.String",
+    "description": "A description for 'frontend.servlet-path'"
+  },
+  {
+    "name": "locn",
+    "type": "java.lang.String",
+    "description": "A description for 'locn'"
+  }
+]}

@@ -1,0 +1,69 @@
+<div class="breadcrumb">
+    <div class="title">Ticket List</div>
+    <div class="routes">
+        <button type="button" (click)="raiseTicket()">Raise Ticket</button>
+    </div>
+</div>
+<div class="container">
+    <header>
+        <div class="center">
+            <select (change)="onSelectRow($event)">
+                @for (row of rows; track row) {
+                <option [selected]="row === limit()" [value]="row">{{ row }}</option>
+                }
+            </select>
+        </div>
+        <div>
+            <div class="input-container">
+                <input type="text" placeholder="Enter search term ..." [(ngModel)]="searchTxt" />
+                <button mat-icon-button class="search" (click)="search()" [disabled]="!(searchTxt && searchTxt.length)">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+    <br />
+    <div class="data">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Date</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (item of items; track $index; let i = $index) {
+                <tr class="row-data">
+                    <td>{{ (i + 1) + offset() * limit() }}.</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.subject }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>
+                        <button mat-icon-button (click)="view(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">mark_unread_chat_alt</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="deleteData(item.id)">
+                            <mat-icon style="color: #76838F;" fontSet="material-icons-outlined">delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="paginator">
+        @if(items.length){
+        <app-paginator (page)="navigate($event)" [size]="size()" [records]="records()" [from]="from()"
+            [to]="to()"></app-paginator>
+        }
+        @else {
+        <h2>No Data in the table...</h2>
+        }
+    </div>
+</div>

@@ -1,0 +1,55 @@
+@use "../../../constants/colors.scss" as color;
+
+.header {
+  font-family: ROBOTO-MEDIUM;
+  color: #000;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 30px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 25px 40px;
+}
+
+.tit{
+  margin: 10px 0 0px;
+  font-family: ROBOTO-LIGHT;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr > th,
+  tr > td {
+    border: 1px solid;
+    border-color: color.$borderColor;
+    text-align: center;
+    background-color: color.$tableHeaderBackgroundColor;
+  }
+
+  tr > th {
+    font-family: ROBOTO-MEDIUM;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 10px;
+    color: color.$tableHeaderColor;
+  }
+
+  tr > td {
+    font-family: ROBOTO-LIGHT;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0 10px;
+  }
+
+  tr > .row-data:hover {
+    background-color: #ccc;
+  }
+}

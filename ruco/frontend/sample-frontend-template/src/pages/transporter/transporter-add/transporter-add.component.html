@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="header">Add Transporter</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+        <div class="input-field">
+            <label>Transporter Name<span class="imp">*</span></label>
+            <input type="text" formControlName="transporterName" required>
+        </div>
+        <div class="input-field">
+            <label>Transporter Address<span class="imp">*</span></label>
+            <textarea formControlName="transporterAddress" required></textarea>
+        </div>
+        <div class="input-field">
+            <label>State<span class="imp">*</span></label>
+            <input type="text" placeholder="Select State" formControlName="state" [matAutocomplete]="auto1" required>
+            <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayStateFn"
+                (optionSelected)="onSelectState($event)">
+                <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                    {{ state.stateName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field">
+            <label>City<span class="imp">*</span></label>
+            <input type="text" placeholder="Select City" formControlName="city" [matAutocomplete]="auto2" required>
+            <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayCityFn"
+                (optionSelected)="onSelectCity($event)">
+                <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                    {{ city.cityName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <!-- <div class="input-field">
+            <label>Area</label>
+            <input type="text" placeholder="Select Area" formControlName="area" [matAutocomplete]="auto3">
+            <mat-autocomplete #auto3="matAutocomplete" [displayWith]="displayAreaFn">
+                <mat-option *ngFor="let area of filteredAreas | async" [value]="area">
+                    {{ area.areaName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div> -->
+        <div class="input-field">
+            <label>Contact Person<span class="imp">*</span></label>
+            <input type="text" formControlName="contactPerson" required>
+        </div>
+        <div class="input-field">
+            <label>Mobile No.<span class="imp">*</span></label>
+            <input type="text" formControlName="mobileNo" maxlength="10" required (keypress)="onlyNumbers($event)">
+        </div>
+        <div class="input-field">
+            <label>License No.<span class="imp">*</span></label>
+            <input type="text" formControlName="licenseNo" required maxlength="20">
+        </div>
+        <div class="input-field">
+            <label>Vehicle No.<span class="imp">*</span></label>
+            <input type="text" formControlName="vehicleNo" required maxlength="20">
+        </div>
+        <div class="input-field">
+            <label>GST No.<span class="imp">*</span></label>
+            <input type="text" formControlName="gstNo" required maxlength="15">
+        </div>
+        <div class="input-field">
+            <label>PAN No.<span class="imp">*</span></label>
+            <input type="text" formControlName="panNo" required maxlength="10">
+        </div>
+        <div class="input-field">
+            <label>Contract Date<span class="imp">*</span></label>
+            <input type="date" formControlName="contractDate" required>
+        </div>
+        <div class="input-field">
+            <label>Contract Rate(Per Kg)<span class="imp">*</span></label>
+            <input type="text" formControlName="ratePerKg" required (keypress)="onlyNumbers($event)">
+        </div>
+        <div class="input-field">
+            <label>Branch<span class="imp">*</span></label>
+            <input type="text" placeholder="Select Branch" formControlName="branch" [matAutocomplete]="auto4">
+            <mat-autocomplete #auto4="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let branch of filteredBranches | async" [value]="branch">
+                    {{ branch.branchName }}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="input-field"></div>
+        <div class="input-field"></div>
+        <div class="action-btns">
+            <button type="submit">Submit</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

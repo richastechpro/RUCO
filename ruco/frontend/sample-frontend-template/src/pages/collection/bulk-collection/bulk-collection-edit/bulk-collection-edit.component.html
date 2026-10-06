@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="header">Create Bulk Collection</div>
+    <div class="add-btn">
+        <div class="input-field">
+            <label>Enter Collection Name</label>
+            <input type="text" style="width: 205px;" required [(ngModel)]="collectionName">
+        </div>
+        <div class="actn-btns">
+            <button type="button" (click)="addItem()">Add</button>
+        </div>
+    </div>
+    <br>
+    <div class="data">
+        <form [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" ngNativeValidate>
+            <ng-container formArrayName="items">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>FBO Name</th>
+                            <th style="width: 100px;">Date</th>
+                            <th>Tentative Qty.</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+                            <td>{{ i + 1 }}.</td>
+                            <td>
+                                <div class="input-field">
+                                    <input type="text" placeholder="Select Branch" formControlName="branch" [matAutocomplete]="auto">
+                                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayBranchFn">
+                                        <mat-option *ngFor="let branch of filteredBranches[i] | async" [value]="branch">
+                                            {{ branch.fboBranchName }}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-field">
+                                    <input type="date" formControlName="requestDate" required>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-field" style="width: 120px;margin-right: -100px;margin-left: 10px;">
+                                    <input type="number" formControlName="qtyAvailable" required>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-field">
+                                    <textarea formControlName="descr" required></textarea>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" mat-icon-button (click)="removeItem(i)">
+                                    <mat-icon style="color: #76838F;"
+                                        fontSet="material-icons-outlined">delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </ng-container>
+        </form>
+    </div>
+    <div class="action-btns" style="margin-top: 30px;">
+        <button type="submit" (click)="submit()">Submit</button>
+        <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+</div>

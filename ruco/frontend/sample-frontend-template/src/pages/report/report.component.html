@@ -1,0 +1,18 @@
+<div class="breadcrumb">
+    <div class="title">Reports</div>
+</div>
+<div class="container">
+    <label>From :&nbsp;</label><input type="date" [(ngModel)]="from">&nbsp;&nbsp;&nbsp;
+    <label>To :&nbsp;</label><input type="date" [(ngModel)]="to"><br><br>
+
+    <mat-radio-group [(ngModel)]="type">
+        @for (type of types; track $index) {
+        <mat-radio-button [value]="type"><label>{{type}}</label></mat-radio-button><br>
+        }
+    </mat-radio-group>
+
+    <div class="action-btns" style="margin-top: 30px;">
+        <button type="button" (click)="submit()" style="background-color: #007bff;" matRipple>Submit</button>
+        <button type="button" (click)="log()" style="background-color: #007bff;" matRipple>Audit</button>
+    </div>
+</div>

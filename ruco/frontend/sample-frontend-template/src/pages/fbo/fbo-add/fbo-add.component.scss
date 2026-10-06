@@ -1,0 +1,27 @@
+@use "../../../constants/colors.scss" as color;
+
+.container {
+  margin: 25px;
+}
+
+.header {
+  font-family: ROBOTO-MEDIUM;
+  color: #000;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 30px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 25px 40px;
+}
+
+.tit{
+  margin: 10px 0 0px;
+  font-family: ROBOTO-LIGHT;
+}
